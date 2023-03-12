@@ -80,7 +80,7 @@ header('Location: index.php');
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                   </label>
                 </div> 
-                <div class="flex-1 px-2 mx- text-blue-500 font-bold">Nano Music</div>
+                <div class="flex-1 px-2 mx- text-blue-500 font-bold">Natano's Diary</div>
                 <div class="lg:hidden flex justify-end">
               <form action="" method="POST">
         <input type="text" placeholder="Search Post" class="input input-bordered rounded-full w-36 md:w-48 h-9 border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_postNav" id="s_postNav" autocomplete="off" />
@@ -110,10 +110,11 @@ header('Location: index.php');
               <label for="my-drawer-3" class="drawer-overlay"></label> 
               <ul class="menu p-4 w-80 bg-zinc-900 text-white text-2xl">
                 <!-- Sidebar content here -->
-                 <h1 class="text-blue-500 font-bold m-3 mt-0 text-sm"> Nano Music </h1>
+                 <h1 class="text-blue-500 font-bold m-3 mt-0 text-sm"> Nano Diary </h1>
                 <li><a href="index.php" class="active:bg-slate-300 active:bg-opacity-25 font-normal text-white"> <i class="fa-solid fa-book"></i> Diary</a></li>
                 <li><a href="gallery.php" class="active:bg-slate-300 active:bg-opacity-25 font-normal text-white"> <i class="fas fa-image"></i> Gallery </a></li>
                 <li><a href="music.php" class="active:bg-slate-300 active:bg-opacity-25 font-bold text-white"> <i class="fas fa-music"></i> Music </a></li>
+                <li> <a class="active:bg-slate-300 active:bg-opacity-25 font-normal text-white" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profile </a></li>
     <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <label for="my-modal-2" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</label>  </li>
     <?php if ($LOGIN === true) { ?>
        <li class="absolute bottom-3">  
@@ -140,7 +141,7 @@ $result = $sort->get_result();
           <form class="w-max text-left" id="logout-form" method="post" target="_self" id="logout-form">
     </form>
   <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 bg-zinc-700">
-    <li> <a class="active:bg-slate-200 active:bg-opacity-50 text-sm" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profile </a></li>
+    
     <li><a class="active:bg-slate-200 active:bg-opacity-50"> 
     <i class="fa fa-sign-out" aria-hidden="true"></i>
           <button type="submit" form="logout-form" value="Logout" name="logout" class="text-white text-sm"> Logout </button>

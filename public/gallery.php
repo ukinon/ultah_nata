@@ -19,9 +19,55 @@ header('Location: index.php');
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.1/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
-    <title>Nano Diary</title>
+    <title>Natano's Diary</title>
+
+    <script>
+      
+    $(document).ready(function() {
+      load_data();
+      function load_data(post, page) {
+        $.ajax({
+          method: "POST",
+          url: "post.php",
+          data: {
+            post: post,
+            halaman: page
+          },
+          success: function(data) {
+            $('#data').html(data);
+          }
+        });
+      }
+
+      $(document).on('change', '#halaman', function() {
+        var page = $(this).val();
+        var post = $("#s_post").val();
+        load_data(post, page);
+      });
+      $(document).on('click', '#next', function() {
+        var page = parseInt($("#halaman").val()) + 1;
+        var post = $("#s_post").val();
+        load_data(post, page);
+      });
+      $(document).on('click', '#prev', function() {
+        var page = parseInt($("#halaman").val()) - 1;
+        var post = $("#s_post").val();
+        load_data(post, page);
+      });
+
+      $('#s_post').keyup(function() {
+        var page = $(this).val();
+        var post = $("#s_post").val();
+        load_data(post, 1);
+      });
+      $('#s_postNav').keyup(function() {
+        var page = $(this).val();
+        var post = $("#s_postNav").val();
+        load_data(post, 1);
+      });
+    });
+    
+  </script>
 </head>
 <body>
 <div class="drawer drawer-mobile">
@@ -42,20 +88,33 @@ header('Location: index.php');
   </div>
               </div>
               <!-- Page content here -->
-   <div class="flex justify-center">
-    <h1 class="font-bold text-3xl text-slate-200">
-        Nano Gallery
-    </h1>
-   </div>
+              <div class="hidden lg:flex justify-end">
+              <form action="" method="POST">
+        <input type="text" placeholder="Search Post" class="input input-bordered rounded-full max-w-none w-64 border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_post" id="s_post" autocomplete="off" />
+      </form>
+  </div>
+              <div <?php if($LOGIN == true){} else{echo"class='hidden'";}?>>
+              <form action="" method="POST" enctype="multipart/form-data">
+              <div class="flex justify-center">            
+              <textarea class="textarea textarea-bordered w-full mr-0 ml-0 h-40 lg:h-56 text-white bg-zinc-900 resize-none m-3 border-zinc-500 border-opacity-25 border-r-0 border-l-0 mt-0 rounded-none placeholder:text-slate-200 placeholder:text-opacity-50" id="post" name="post" placeholder="Ada apa hari ini?"></textarea>
+</div>
+<div class="flex justify-end">
+<button type="submit" class="btn w-30 h-10 bg-blue-500 text-white mr-1 md:mr-3" name="submit"> Send </button>
+</div>
+</form>
+</div>
+<br>
+<div id="data"> </div>
 </div>
             <div class="drawer-side border-zinc-500 border-solid border-opacity-25 border-r-2">
               <label for="my-drawer-3" class="drawer-overlay"></label> 
               <ul class="menu p-4 w-80 bg-zinc-900 text-white text-2xl">
                 <!-- Sidebar content here -->
-                 <h1 class="text-blue-500 font-bold m-3 mt-0 text-sm"> Nano Gallery </h1>
+                 <h1 class="text-blue-500 font-bold m-3 mt-0 text-sm"> Nano Diary </h1>
                 <li><a href="index.php" class="active:bg-slate-300 active:bg-opacity-25 font-normal text-white"> <i class="fa-solid fa-book"></i> Diary</a></li>
                 <li><a href="gallery.php" class="active:bg-slate-300 active:bg-opacity-25 font-bold text-white"> <i class="fas fa-image"></i> Gallery </a></li>
                 <li><a href="music.php" class="active:bg-slate-300 active:bg-opacity-25 font-normal text-white"> <i class="fas fa-music"></i> Music </a></li>
+                <li> <a class="active:bg-slate-300 active:bg-opacity-25 font-normal text-white" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profile </a></li>
     <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <label for="my-modal-2" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</label>  </li>
     <?php if ($LOGIN === true) { ?>
        <li class="absolute bottom-3">  
@@ -82,7 +141,7 @@ $result = $sort->get_result();
           <form class="w-max text-left" id="logout-form" method="post" target="_self" id="logout-form">
     </form>
   <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 bg-zinc-700">
-    <li> <a class="active:bg-slate-200 active:bg-opacity-50 text-sm" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profile </a></li>
+    
     <li><a class="active:bg-slate-200 active:bg-opacity-50"> 
     <i class="fa fa-sign-out" aria-hidden="true"></i>
           <button type="submit" form="logout-form" value="Logout" name="logout" class="text-white text-sm"> Logout </button>
