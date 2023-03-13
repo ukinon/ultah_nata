@@ -14,7 +14,7 @@ require 'check.php';
   <script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
 
   <script>
-    $('.trash-icon').click(function(){
+    $('#trash-icon').click(function(){
     //get cover id
     var id=$(this).data('id');
     //set href for cancel button
@@ -53,19 +53,23 @@ require 'check.php';
           $user = $row["username"];
           $postID = $row["id"];
 
-          echo '<br> <div class="textarea w-full m-0 bg-zinc-900 mt-0 mb-0 h-auto rounded-none text-white resize-none border-slate-200 border-opacity-20 border-r-0 border-l-0 border-t-0"> 
+          echo '<br> <div class="textarea w-full m-0 bg-black mt-0 mb-0 h-auto rounded-none text-white resize-none border-slate-200 border-opacity-20 border-r-0 border-l-0 border-t-0"> 
           
           <div class="flex flex-row gap-2">
-          <p class="text-lg font-bold">'.$user.' </p> 
+          <p class="text-sm lg:text-lg font-bold">'.$user.' </p> 
           
-          <p class="text-base text-zinc-400">'.substr($date, 11, 5).'</p> <br> 
+          <p class="text-xs lg:text-xs text-zinc-400 mt-2">'.substr($date, 11, 5).'</p> <br> 
           </div>
 
-          <p class="text-base text-slate-200">'.$post.'</p> <br> 
+          <p class="text-xs lg:text-base text-slate-200">'.$post.'</p> <br> 
           
+          
+          
+          <div class="flex justify-between flex-row"> 
           <p class="text-zinc-400 text-xs">'.substr($date, 0, 10).'</p>
-          
-          <label for="my-modal-6" data-id="'.$postID.'" class="'.(($LOGIN === false) ? "hidden" : "trash-icon flex justify-end").'"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label> </div>';
+          <label for="my-modal-6" data-id="'.$postID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center").'" id="trash-icon"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label> 
+          </div> 
+          </div>';
         }
     }
       ?>
