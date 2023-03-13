@@ -70,11 +70,18 @@ header('Location: index.php');
   </script>
 </head>
 <body>
+<div class="<?php echo $alert ?> alert alert-warning shadow-lg lg:sticky lg:top-0 lg:z-50">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+              <span>Warning: Invalid email address or password!</span>
+            </div>
+          </div>
+
 <div class="drawer drawer-mobile">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
               <!-- Navbar -->
-              <div class="w-full navbar bg-transparent backdrop-blur-lg text-black lg:hidden sticky top-0 z-50 border-zinc-500">
+              <div class="w-full navbar bg-transparent backdrop-blur-lg text-black lg:hidden sticky top-0 z-50 border-zinc-300">
                 <div class="flex-none lg:hidden">
                   <label for="my-drawer-3" class="btn btn-square btn-ghost text-blue-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -96,7 +103,7 @@ header('Location: index.php');
               <div <?php if($LOGIN == true){} else{echo"class='hidden'";}?>>
               <form action="" method="POST" enctype="multipart/form-data">
               <div class="flex justify-center">            
-              <textarea class="textarea textarea-bordered w-full mr-0 ml-0 h-40 lg:h-56 text-white bg-black resize-none m-3 border-zinc-500 border-opacity-25 border-r-0 border-l-0 mt-0 rounded-none placeholder:text-slate-200 placeholder:text-opacity-50" id="post" name="post" placeholder="What's up?"></textarea>
+              <textarea class="textarea textarea-bordered w-full mr-0 ml-0 h-40 lg:h-56 text-white bg-black resize-none m-3 border-zinc-300 border-opacity-25 border-r-0 border-l-0 mt-0 rounded-none placeholder:text-slate-200 placeholder:text-opacity-50" id="post" name="post" placeholder="What's up?"></textarea>
 </div>
 <div class="flex justify-end">
 <button type="submit" class="btn btn-sm sm:btn-md w-16 md:w-24 h-10 text-sm bg-blue-500 text-white mr-1 md:mr-3 rounded-full hover:bg-blue-700" name="submit"> Send </button>
@@ -106,7 +113,7 @@ header('Location: index.php');
 <br>
 <div id="data"> </div>
 </div>
-            <div class="drawer-side border-zinc-500 border-solid border-opacity-25 border-r-2">
+            <div class="drawer-side border-zinc-300 border-solid border-opacity-25 border-r-2">
               <label for="my-drawer-3" class="drawer-overlay"></label> 
               <ul class="menu p-4 w-80 bg-black text-white text-2xl">
                 <!-- Sidebar content here -->
@@ -120,7 +127,7 @@ header('Location: index.php');
        <li class="absolute bottom-3">  
         
         <?php
-$sql = "SELECT username FROM users WHERE username = '$user'";
+$sql = "SELECT username, id FROM users WHERE username = '$user'";
 $sort = $conn->prepare($sql);
 $sort->execute();
 $result = $sort->get_result();
@@ -132,8 +139,9 @@ $result = $sort->get_result();
 <?php if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
           $username = $row["username"];
+          $userID = $row["id"];
           echo'
-          <p class="cursor-pointer">'. $username .'</p>
+          <p class="cursor-pointer">'. $username.'</p>
           ';
         }
       }

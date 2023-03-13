@@ -74,7 +74,8 @@ header('Location: index.php');
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
               <!-- Navbar -->
-              <div class="w-full navbar bg-zinc-800 text-black lg:hidden">
+              <!-- Navbar -->
+              <div class="w-full navbar bg-transparent backdrop-blur-lg text-black lg:hidden sticky top-0 z-50 border-zinc-300">
                 <div class="flex-none lg:hidden">
                   <label for="my-drawer-3" class="btn btn-square btn-ghost text-blue-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -83,9 +84,10 @@ header('Location: index.php');
                 <div class="flex-1 px-2 mx- text-blue-500 font-bold">Natano's Diary</div>
                 <div class="lg:hidden flex justify-end">
               <form action="" method="POST">
-        <input type="text" placeholder="Search Post" class="input input-bordered rounded-full w-36 md:w-48 h-9 border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_postNav" id="s_postNav" autocomplete="off" />
+        <input type="text" placeholder="&#xf002; Search Post" style="font-family: Helvetica, FontAwesome;" class="input input-bordered rounded-full w-36 md:w-48 h-9 placeholder:text-sm border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_postNav" id="s_postNav" autocomplete="off" />
       </form>
   </div>
+              </div>
               </div>
               <!-- Page content here -->
               <div class="hidden lg:flex justify-end">

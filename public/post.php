@@ -40,7 +40,7 @@ require 'check.php';
       $halaman_awal = ($halaman - 1) * $batas;
       $nomor = $halaman_awal + 1;
 
-      $sql = "SELECT user, postDate, post, username, post.id FROM post INNER JOIN users on post.user = users.id WHERE post LIKE ? order by postDate DESC limit $halaman_awal, $batas ";
+      $sql = "SELECT user, postDate, post, username, post.postID, users.id FROM post INNER JOIN users on post.user = users.id WHERE post LIKE ? order by postDate DESC limit $halaman_awal, $batas ";
       $sort = $conn->prepare($sql);
       $sort->bind_param('s', $search_post);
       $sort->execute();
@@ -51,26 +51,37 @@ require 'check.php';
           $post = $row["post"];
           $date = $row["postDate"];
           $user = $row["username"];
-          $postID = $row["id"];
+          $postID = $row["postID"];
+          $poster = $row["user"];
+          $posterID = $row["id"];
 
           echo '<br> <div class="textarea w-full m-0 bg-black mt-0 mb-0 h-auto rounded-none text-white resize-none border-slate-200 border-opacity-20 border-r-0 border-l-0 border-t-0"> 
           
           <div class="flex flex-row gap-2">
           <p class="text-sm lg:text-lg font-bold">'.$user.' </p> 
           
-          <p class="text-xs lg:text-xs text-zinc-400 mt-2">'.substr($date, 11, 5).'</p> <br> 
+          <p class="text-xs lg:text-xs text-zinc-400 mt-0.5 lg:mt-2">'.substr($date, 11, 5).'</p> <br> 
           </div>
 
-          <p class="text-xs lg:text-base text-slate-200">'.$post.'</p> <br> 
+          <p class="text-xs lg:text-base mt-5 text-slate-200">'.$post.'</p> <br> 
           
           
           
           <div class="flex justify-between flex-row"> 
-          <p class="text-zinc-400 text-xs">'.substr($date, 0, 10).'</p>
-          <label for="my-modal-6" data-id="'.$postID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center").'" id="trash-icon"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label> 
-          </div> 
-          </div>';
+          <p class="text-zinc-400 text-xs">'.substr($date, 0, 10).'</p>';
+
+          if($userID == $poster){
+        echo '<label for="my-modal-6" data-id="'.$postID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center").'" id="trash-icon"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label>';
+         echo '</div>';
+          }
+          else{
+            echo'</div>';
+          }
+         echo '</div>';
         }
+    }
+    else{
+      echo '<h1 class="flex justify-center h-52 items-center p-3 align-middle text-3xl"> No Posts </h1>';
     }
       ?>
 
@@ -116,7 +127,7 @@ $total_halaman = ceil($jumlah_data / $batas);
   ?>
 </select>
 <button id="next" 
-<?php if($halaman == $total_halaman) {?> 
+<?php if($halaman == $total_halaman || $halaman <= 1) {?> 
   disabled class="h-10 w-20  rounded-lg mt-8 ml-3 bg-zinc-800 text-slate-200 border-none cursor-not-allowed"
   <?php }?> 
 class="h-10 w-20 hover:bg-zinc-600 active:bg-zinc-500 rounded-lg mt-8 ml-3 bg-zinc-700 text-slate-200 border-none">Next</button>
