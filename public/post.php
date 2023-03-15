@@ -11,10 +11,11 @@ require 'check.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
 
   <script>
-    $('#trash-icon').click(function(){
+    $('.trash-icon').click(function(){
     //get cover id
     var id=$(this).data('id');
     //set href for cancel button
@@ -40,7 +41,7 @@ require 'check.php';
       $halaman_awal = ($halaman - 1) * $batas;
       $nomor = $halaman_awal + 1;
 
-      $sql = "SELECT user, postDate, post, username, post.postID, users.id FROM post INNER JOIN users on post.user = users.id WHERE post LIKE ? order by postDate DESC limit $halaman_awal, $batas ";
+      $sql = "SELECT user, postDate, post, username, postID, users.id FROM post INNER JOIN users on post.user = users.id WHERE post LIKE ? order by postDate DESC limit $halaman_awal, $batas ";
       $sort = $conn->prepare($sql);
       $sort->bind_param('s', $search_post);
       $sort->execute();
@@ -71,7 +72,7 @@ require 'check.php';
           <p class="text-zinc-400 text-xs">'.substr($date, 0, 10).'</p>';
 
           if($userID == $poster){
-        echo '<label for="my-modal-6" data-id="'.$postID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center").'" id="trash-icon"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label>';
+        echo '<label for="my-modal-6" data-id="'.$postID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center, cursor-pointer, trash-icon").'"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label>';
          echo '</div>';
           }
           else{
