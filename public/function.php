@@ -13,11 +13,11 @@ function tambah($data, $userID)
 {
     global $conn;
     $post = htmlspecialchars($data["post"]);
-    $date = date("Y-m-d H:i:sa");
+    $date = date("Y-m-d H:i:s");
 
     //query insert data
 
-    $query = "INSERT INTO post VALUES ('', '$userID', '$post', '$date')";
+    $query = "INSERT INTO post VALUES ('$userID', '$post', '$date')";
 
     mysqli_query($conn, $query);
 

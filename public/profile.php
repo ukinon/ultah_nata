@@ -88,7 +88,6 @@ header('Location: index.php');
       </form>
   </div>
               </div>
-              </div>
               <!-- Page content here -->
               <div class="hidden lg:flex justify-end">
               <form action="" method="POST">
@@ -110,13 +109,13 @@ header('Location: index.php');
 </div>
             <div class="drawer-side border-zinc-500 border-solid border-opacity-25 border-r-2">
               <label for="my-drawer-3" class="drawer-overlay"></label> 
-              <ul class="menu p-4 w-80 bg-black  text-white text-2xl">
+              <ul class="menu p-4 w-80 bg-black text-white text-2xl">
                 <!-- Sidebar content here -->
                  <h1 class="text-blue-500 font-bold m-3 mt-0 text-sm"> Nano Diary </h1>
-                <li><a href="index.php" class="active:bg-slate-300 active:bg-opacity-25 mb-3 font-normal text-white"> <i class="fa-solid text-zinc-500 fa-book"></i> Diary</a></li>
-                <li><a href="gallery.php" class="active:bg-slate-300 active:bg-opacity-25 mb-3 font-normal text-white"> <i class="fas text-zinc-500 fa-image"></i> Gallery </a></li>
-                <li><a href="music.php" class="active:bg-slate-300 active:bg-opacity-25 mb-3 font-normal text-white"> <i class="fas text-zinc-500 fa-music"></i> Music </a></li>
-                <li> <a class="active:bg-slate-300 active:bg-opacity-25 mb-3 font-bold text-white" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profile </a></li>
+                <li><a href="index.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fa-solid text-zinc-500 fa-book"></i> Diary</a></li>
+                <li><a href="gallery.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fas text-zinc-500 fa-image"></i> Gallery </a></li>
+                <li><a href="music.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-whit"> <i class="text-zinc-500 fas fa-music"></i> Music </a></li>
+                <li> <a class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-bold text-white" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profile </a></li>
     <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <label for="my-modal-2" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</label>  </li>
     <?php if ($LOGIN === true) { ?>
        <li class="absolute bottom-3">  
