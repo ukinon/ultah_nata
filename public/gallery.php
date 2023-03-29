@@ -127,14 +127,21 @@ $sort->execute();
 $result = $sort->get_result();
 ?>
 
-<div class="flex justify-center text-center cursor-default p-4 bg-zinc-700">
+<div class="flex w justify-center text-center cursor-default p-4 hover:bg-slate-200 hover:bg-opacity-10 active:bg-zinc-800">
 <div class="dropdown dropdown-top text-lg ">
 <label class="hover:bg-none  active:bg-none" tabindex="0" class="m-1">
 <?php if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
           $username = $row["username"];
           echo'
-          <p class="cursor-pointer">'. $username .'</p>
+          <div class="flex flex-row items-center">
+          <div class="avatar mr-3">
+  <div class="w-12 rounded-full">
+    <img src="../assets/'.$user.'.jpg" />
+  </div>
+</div>
+          <p class="cursor-pointer">'. $username.'</p>
+          </div>
           ';
         }
       }

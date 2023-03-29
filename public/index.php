@@ -82,13 +82,13 @@ header('Location: index.php');
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
               <!-- Navbar -->
-              <div class="w-full navbar bg-transparent backdrop-blur-lg text-black lg:hidden sticky top-0 z-50 border-zinc-300">
+              <div class="w-full navbar bg-transparent backdrop-blur-md text-black lg:hidden sticky top-0 z-50 border-zinc-300">
                 <div class="flex-none lg:hidden">
                   <label for="my-drawer-3" class="btn btn-square btn-ghost text-blue-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                   </label>
                 </div> 
-                <div class="flex-1 px-2 mx- text-blue-500 font-bold">Natano's Diary</div>
+                <div class="flex-1 px-2  text-blue-500 font-bold">Nano Diary</div>
                 <div class="lg:hidden flex justify-end">
               <form action="" method="POST">
         <input type="text" placeholder="&#xf002; Search Post" style="font-family: Helvetica, FontAwesome;" class="input input-bordered rounded-full w-36 md:w-48 h-9 placeholder:text-sm border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_postNav" id="s_postNav" autocomplete="off" />
@@ -134,7 +134,7 @@ $sort->execute();
 $result = $sort->get_result();
 ?>
 
-<div class="flex justify-center text-center cursor-default p-4 bg-zinc-700">
+<div class="flex w justify-center text-center cursor-default p-4 hover:bg-slate-200 hover:bg-opacity-10 active:bg-zinc-800">
 <div class="dropdown dropdown-top text-lg ">
 <label class="hover:bg-none  active:bg-none" tabindex="0" class="m-1">
 <?php if ($result->num_rows > 0) {
@@ -142,7 +142,14 @@ $result = $sort->get_result();
           $username = $row["username"];
           $userID = $row["id"];
           echo'
+          <div class="flex flex-row items-center">
+          <div class="avatar mr-3">
+  <div class="w-12 rounded-full">
+    <img src="../assets/'.$user.'.jpg" />
+  </div>
+</div>
           <p class="cursor-pointer">'. $username.'</p>
+          </div>
           ';
         }
       }
