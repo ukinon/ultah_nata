@@ -145,7 +145,7 @@ $result = $sort->get_result();
           <div class="flex flex-row items-center">
           <div class="avatar mr-3">
   <div class="w-12 rounded-full">
-    <img src="./../assets/'.$user.'.jpg" />
+    <img src="./assets/'.$user.'.jpg" />
   </div>
 </div>
           <p class="cursor-pointer">'. $username.'</p>

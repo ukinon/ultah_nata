@@ -94,7 +94,7 @@ header('Location: index.php');
 
               <div class="hero min-h-screen text-slate-200">
   <div class="hero-content flex-col lg:flex-row bg-zinc-900 rounded-xl">
-    <img src="../assets/<?php echo $user ?>.jpg" class="max-w-xs rounded-lg shadow-2xl" />
+    <img src="./assets/<?php echo $user ?>.jpg" class="max-w-xs rounded-lg shadow-2xl" />
     <?php
               $sql = "SELECT nama_lengkap, ttl, alamat, agama, status from users where id = $userID";
               $result = mysqli_query($conn, $sql);
@@ -152,7 +152,7 @@ $result = $sort->get_result();
           <div class="flex flex-row items-center">
           <div class="avatar mr-3">
   <div class="w-12 rounded-full">
-    <img src="../assets/'.$user.'.jpg" />
+    <img src="./assets/'.$user.'.jpg" />
   </div>
 </div>
           <p class="cursor-pointer">'. $username.'</p>
