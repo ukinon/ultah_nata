@@ -142,7 +142,7 @@ $sort->execute();
 $result = $sort->get_result();
 ?>
 
-<div class="flex w justify-center text-center p-4 hover:bg-slate-200 hover:bg-opacity-10 active:bg-zinc-800">
+<div class="flex w mr-36 justify-center text-center p-4 hover:bg-slate-200 hover:bg-opacity-10 active:bg-zinc-800">
 <div class="dropdown dropdown-top text-lg ">
 <label class="hover:bg-none  active:bg-none" tabindex="0" class="m-1">
 <?php if ($result->num_rows > 0) {
