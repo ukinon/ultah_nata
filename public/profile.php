@@ -92,8 +92,8 @@ header('Location: index.php');
               <!-- Page content here -->
               
 
-              <div class="hero min-h-screen bg-black text-slate-200">
-  <div class="hero-content flex-col lg:flex-row">
+              <div class="hero min-h-screen text-slate-200">
+  <div class="hero-content flex-col lg:flex-row bg-zinc-900 rounded-xl">
     <img src="../assets/<?php echo $user ?>.jpg" class="max-w-xs rounded-lg shadow-2xl" />
     <?php
               $sql = "SELECT nama_lengkap, ttl, alamat, agama, status from users where id = $userID";
@@ -171,28 +171,5 @@ $result = $sort->get_result();
               </ul>             
             </div>
           </div>
-
-    <input type="checkbox" id="my-modal-2" class="modal-toggle" />
-    <div class="modal" id="my-modal-2">
-      <div class="modal-box text-white w-96 bg-zinc-800">
-        <label for="my-modal-2" class="btn btn-sm btn-circle absolute right-2 top-2 bg-transparent hover:bg-zinc-800 text-white border-white">✕</label>
-        <form id="login-form" method="post" target="_self">
-          <h1 class="text-lg font-bold">Natano's Diary</h1>
-        <br>
-          <label class="input-group">
-            <span class="bg-blue-600">Username</span>
-            <input type="text" class="input w-full focus:shadow-md bg-slate-400 text-white" name="user" required>
-          </label>
-          <br>
-          <label class="input-group ">
-            <span class="bg-blue-600">Password</span>
-            <input type="password" class="input w-full focus:shadow-md shadow-black bg-slate-400 text-white" name="password" required>
-          </label>
-          <div class="flex justify-end m-3 mr-0 mb-0">
-            <button type="submit" value="login" class=" bg-blue-600 hover:bg-blue-700 border-none w-24 text-white btn mt-5" name="login"> Login </button>
-          </div>
-        </form>
-      </div>
-    </div>
 </body>
 </html>

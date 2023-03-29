@@ -3,6 +3,7 @@ include 'connection.php';
 $LOGIN = null;
 $conn = OpenCon();
 $alert = 'hidden';
+$location = "login.php";
 session_start();
 
 if (isset($_SESSION['username'])) {
@@ -27,6 +28,7 @@ if (isset($_POST["login"])) {
             $_SESSION['id'] = $row['id'];
             header('Location: index.php');
             $LOGIN = true;
+            $location = "index.php";
         } else {
             $alert= '';
         }
