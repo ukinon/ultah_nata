@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-$LOGIN = false;
+$LOGIN = null;
 $conn = OpenCon();
 $alert = 'hidden';
 session_start();
@@ -28,7 +28,7 @@ if (isset($_POST["login"])) {
             header('Location: index.php');
             $LOGIN = true;
         } else {
-            $alert = '';
+            $alert= '';
         }
     }
 

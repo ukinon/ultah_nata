@@ -18,7 +18,6 @@ function tambah($data, $userID)
     //query insert data
 
     $query = "INSERT INTO post(user, post, postDate) VALUES ('$userID', '$post', '$date')";
-
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);

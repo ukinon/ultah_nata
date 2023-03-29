@@ -19,6 +19,7 @@ header('Location: index.php');
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.1/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
     <title>Natano's Diary</title>
 
     <script>
@@ -89,24 +90,38 @@ header('Location: index.php');
   </div>
               </div>
               <!-- Page content here -->
-              <div class="hidden lg:flex justify-end">
-              <form action="" method="POST">
-        <input type="text" placeholder="Search Post" class="input input-bordered rounded-full max-w-none w-64 border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_post" id="s_post" autocomplete="off" />
-      </form>
-  </div>
-              <div <?php if($LOGIN == true){} else{echo"class='hidden'";}?>>
-              <form action="" method="POST" enctype="multipart/form-data">
-              <div class="flex justify-center">            
-              <textarea class="textarea textarea-bordered w-full mr-0 ml-0 h-40 lg:h-56 text-white bg-black resize-none m-3 border-zinc-500 border-opacity-25 border-r-0 border-l-0 mt-0 rounded-none placeholder:text-slate-200 placeholder:text-opacity-50" id="post" name="post" placeholder="Ada apa hari ini?"></textarea>
+              
+
+              <div class="hero min-h-screen bg-black text-slate-200">
+  <div class="hero-content flex-col lg:flex-row">
+    <img src="../assets/<?php echo $user ?>.jpg" class="max-w-xs rounded-lg shadow-2xl" />
+    <?php
+              $sql = "SELECT nama_lengkap, ttl, alamat, agama, status from users where id = $userID";
+              $result = mysqli_query($conn, $sql);
+      if ($result != false && $result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+          $name = $row['nama_lengkap'];
+          $birth = $row['ttl'];
+          $address = $row ['alamat'];
+          $religion = $row['agama'];
+          $status = $row['status'];
+
+          echo'<div>
+          <h1 class="text-3xl font-bold">'.$name.'</h1>
+          <p class="py-4">'.$birth.'</p>
+          <p class="py-4">'.$address.'</p>
+          <p class="py-4">'.$religion.'</p>
+          <p class="py-4">'.$status.'</p>
+        </div>';
+      }
+      else{
+        echo"You Need To Login First";
+      }
+              ?>  
 </div>
-<div class="flex justify-end">
-<button type="submit" class="btn w-30 h-10 bg-blue-500 text-white mr-1 md:mr-3" name="submit"> Send </button>
 </div>
-</form>
 </div>
-<br>
-<div id="data"> </div>
-</div>
+
             <div class="drawer-side border-zinc-500 border-solid border-opacity-25 border-r-2">
               <label for="my-drawer-3" class="drawer-overlay"></label> 
               <ul class="menu p-4 w-80 bg-black text-white text-2xl">
@@ -116,7 +131,7 @@ header('Location: index.php');
                 <li><a href="gallery.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fas text-zinc-500 fa-image"></i> Gallery </a></li>
                 <li><a href="music.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-whit"> <i class="text-zinc-500 fas fa-music"></i> Music </a></li>
                 <li> <a class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-bold text-white" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profile </a></li>
-    <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <label for="my-modal-2" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</label>  </li>
+                <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <a href="login.php" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</a>  </li>
     <?php if ($LOGIN === true) { ?>
        <li class="absolute bottom-3">  
         
@@ -139,7 +154,7 @@ $result = $sort->get_result();
         }
       }
           ?></label>
-          <form class="w-max text-left" id="logout-form" method="post" target="_self" id="logout-form">
+          <form class="w-max text-left" id="logout-form" method="post" action="index.php" id="logout-form">
     </form>
   <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 bg-zinc-700">
     

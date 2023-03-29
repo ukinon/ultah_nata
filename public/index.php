@@ -65,6 +65,14 @@ header('Location: index.php');
         var post = $("#s_postNav").val();
         load_data(post, 1);
       });
+
+      $('#post]').keyup(function(e){
+    $(this).parent().find("#submit").attr("disabled", true);
+    val = $(this).val().trim();    
+    if(val.length > 0){
+        $(this).parent().find("#submit").attr("disabled", false);
+    }
+});
     });
     
   </script>
@@ -106,7 +114,7 @@ header('Location: index.php');
               <textarea class="textarea textarea-bordered w-full mr-0 ml-0 h-40 lg:h-56 text-white bg-black resize-none m-3 border-zinc-300 border-opacity-25 border-r-0 border-l-0 mt-0 rounded-none placeholder:text-slate-200 placeholder:text-opacity-50" id="post" name="post" placeholder="What's up?"></textarea>
 </div>
 <div class="flex justify-end">
-<button type="submit" class="btn btn-sm sm:btn-md w-16 md:w-24 h-10 text-sm bg-blue-500 text-white mr-1 md:mr-3 rounded-full hover:bg-blue-700" name="submit"> Send </button>
+<button type="submit" class="btn btn-sm sm:btn-md w-16 md:w-24 h-10 text-sm bg-blue-500 text-white mr-1 md:mr-3 rounded-full hover:bg-blue-700" id="submit" name="submit"> Send </button>
 </div>
 </form>
 </div>
@@ -122,7 +130,7 @@ header('Location: index.php');
                 <li><a href="gallery.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fas fa-image text-zinc-500"></i> Gallery </a></li>
                 <li><a href="music.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fas fa-music text-zinc-500"></i> Music </a></li>
                 <li> <a class="active:bg-slate-300 active:bg-opacity-25 mb-3 font-normal text-white" href="profile.php"><i class="fa fa-user text-zinc-500" aria-hidden="true"></i> Profile </a></li>
-                <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <label for="my-modal-2" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</label>  </li>
+                <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <a href="login.php" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</a>  </li>
     <?php if ($LOGIN === true) { ?>
        <li class="absolute bottom-3">  
         
@@ -163,27 +171,5 @@ $result = $sort->get_result();
             </div>
           </div>
 
-    <input type="checkbox" id="my-modal-2" class="modal-toggle" />
-    <div class="modal" id="my-modal-2">
-      <div class="modal-box text-white w-96 bg-zinc-800">
-        <label for="my-modal-2" class="btn btn-sm btn-circle absolute right-2 top-2 bg-transparent hover:bg-zinc-800 text-white border-white">✕</label>
-        <form id="login-form" method="post" target="_self">
-          <h1 class="text-lg font-bold">Natano's Diary</h1>
-        <br>
-          <label class="input-group">
-            <span class="bg-blue-600">Username</span>
-            <input type="text" class="input w-full focus:shadow-md bg-slate-400 text-white" name="user" required>
-          </label>
-          <br>
-          <label class="input-group ">
-            <span class="bg-blue-600">Password</span>
-            <input type="password" class="input w-full focus:shadow-md shadow-black bg-slate-400 text-white" name="password" required>
-          </label>
-          <div class="flex justify-end m-3 mr-0 mb-0">
-            <button type="submit" value="login" class=" bg-blue-600 hover:bg-blue-700 border-none w-24 text-white btn mt-5" name="login"> Login </button>
-          </div>
-        </form>
-      </div>
-    </div>
 </body>
 </html>
