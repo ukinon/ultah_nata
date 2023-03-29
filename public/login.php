@@ -25,13 +25,13 @@ require 'check.php';
               <span>Warning: Wrong username or password!</span>
             </div>
           </div>
-    <div>
+    <div class="text-slate-200">
 <form id="login-form" method="post" action="<?php $location ?>">
-          <h1 class="text-lg font-bold text-center text-blue-500 my-3">Nano Diary</h1>
+        <a href="index.php">  <h1 class="text-lg font-bold text-center text-blue-500 my-3">Nano Diary</h1> </a>
         <br>
         <div class="form-control w-full max-w-xs mb-5">
   <label class="label">
-    <span class="label-text">Username</span>
+    <span class="label-text text-slate-200">Username</span>
   </label>
   <input type="text" name="user" placeholder="Type here" class="input input-ghost w-80 border-b-slate-200 focus:border-b-blue-500 focus:bg-transparent border-t-0 border-r-0 border-l-0 rounded-none" />
 
@@ -39,7 +39,7 @@ require 'check.php';
           <br>
           <div class="form-control w-full max-w-xs mb-5">
   <label class="label">
-    <span class="label-text">Password</span>
+    <span class="label-text text-slate-200">Password</span>
   </label>
   <input type="password" name="password" placeholder="Type here"class="input input-ghost w-80 border-b-slate-200 focus:border-b-blue-500 focus:bg-transparent border-t-0 border-r-0 border-l-0 rounded-none" />
 </div>
