@@ -58,10 +58,15 @@ require 'check.php';
 
           echo '<br> <div class="textarea w-full m-0 bg-black mt-0 mb-0 h-auto rounded-none text-white resize-none border-slate-200 border-opacity-20 border-r-0 border-l-0 border-t-0"> 
           
-          <div class="flex flex-row gap-2">
+          <div class="flex flex-row gap-2 items-center">
+
+          <div class="w-10 rounded-full">
+          <img src="./assets/'.$user.'.jpg" class="rounded-full" />
+        </div>
+
           <p class="text-sm lg:text-lg font-bold">'.$user.' </p> 
           
-          <p class="text-xs lg:text-xs text-zinc-400 mt-0.5 lg:mt-2">'.substr($date, 11, 5).'</p> <br> 
+          <p class="text-xs lg:text-xs text-zinc-400 mt-0.5 lg:mt-1">'.substr($date, 11, 5).'</p> <br> 
           </div>
 
           <p class="text-xs lg:text-base mt-5 text-slate-200">'.$post.'</p> <br> 
