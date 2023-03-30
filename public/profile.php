@@ -103,7 +103,7 @@ header('Location: index.php');
     <?php
               $sql = "SELECT nama_lengkap, ttl, alamat, agama, status from users where id = $userID";
               $result = mysqli_query($conn, $sql);
-      if ($result != false && $result->num_rows > 0) {
+      if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
           $name = $row['nama_lengkap'];
           $birth = $row['ttl'];
