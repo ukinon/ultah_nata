@@ -25,7 +25,7 @@ require 'check.php';
               <span>Warning: Wrong username or password!</span>
             </div>
           </div>
-    <div class="text-slate-200">
+    <div class="p-6 border-zinc-800 border-2 text-slate-200">
 <form id="login-form" method="post" action="<?php $location ?>">
         <a href="index.php">  <h1 class="text-lg font-bold text-center text-blue-500 my-3">Nano Diary</h1> </a>
         <br>

@@ -29,7 +29,7 @@ header('Location: index.php');
       function load_data(post, page) {
         $.ajax({
           method: "POST",
-          url: "post.php",
+          url: "myPost.php",
           data: {
             post: post,
             halaman: page
@@ -90,9 +90,14 @@ header('Location: index.php');
   </div>
               </div>
               <!-- Page content here -->
+              <div class="hidden lg:flex justify-end z-50">
+              <form action="" method="POST">
+        <input type="text" placeholder="&#xf002; Search Post" style="font-family: Helvetica, FontAwesome;" class="input input-bordered rounded-full max-w-none w-64 border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_post" id="s_post" autocomplete="off" />
+      </form>
+  </div>
               
 
-              <div class="hero min-h-screen text-slate-200">
+              <div class="<?php if($LOGIN == false){ ?> hidden <?php }?>hero min-h-screen text-slate-200 lg:-mb-6 lg:-mt-24">
   <div class="hero-content flex-col lg:flex-row bg-zinc-900 rounded-xl">
     <img src="./assets/<?php echo $user ?>.jpg" class="max-w-xs rounded-lg shadow-2xl" />
     <?php
@@ -108,19 +113,20 @@ header('Location: index.php');
 
           echo'<div>
           <h1 class="text-3xl font-bold">'.$name.'</h1>
-          <p class="py-4">'.$birth.'</p>
-          <p class="py-4">'.$address.'</p>
-          <p class="py-4">'.$religion.'</p>
-          <p class="py-4">'.$status.'</p>
+          <p class="py-2 md:py-4">'.$birth.'</p>
+          <p class="py-2 md:py-4">'.$address.'</p>
+          <p class="py-2 md:py-4">'.$religion.'</p>
+          <p class="py-2 md:py-4">'.$status.'</p>
         </div>';
-      }
-      else{
-        echo"You Need To Login First";
       }
               ?>  
 </div>
 </div>
+<div class="<?php if($LOGIN == false){ ?> hidden <?php }?>flex flex-col">
+<div class="text-3xl mb-5 ml-3 text-slate-200 lg:-mt-20"><h1>Your Posts</h1></div>
+<div id="data"> </div>
 </div>
+    </div>
 
             <div class="drawer-side border-zinc-500 border-solid border-opacity-25 border-r-2">
               <label for="my-drawer-3" class="drawer-overlay"></label> 

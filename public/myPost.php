@@ -41,7 +41,7 @@ require 'check.php';
       $halaman_awal = ($halaman - 1) * $batas;
       $nomor = $halaman_awal + 1;
 
-      $sql = "SELECT user, postDate, post, username, postID, users.id FROM post INNER JOIN users on post.user = users.id WHERE post LIKE ? order by postDate DESC limit $halaman_awal, $batas ";
+      $sql = "SELECT user, postDate, post, username, postID, users.id FROM post INNER JOIN users on post.user = users.id WHERE post LIKE ? and user = $userID order by postDate DESC limit $halaman_awal, $batas ";
       $sort = $conn->prepare($sql);
       $sort->bind_param('s', $search_post);
       $sort->execute();
@@ -51,7 +51,7 @@ require 'check.php';
         while ($row = $result->fetch_assoc()) {
           $post = $row["post"];
           $date = $row["postDate"];
-          $user = $row["username"];
+          $username = $row["username"];
           $postID = $row["postID"];
           $poster = $row["user"];
           $posterID = $row["id"];
@@ -61,10 +61,10 @@ require 'check.php';
           <div class="flex flex-row gap-2 items-center">
 
           <div class="w-10 rounded-full">
-          <img src="./assets/'.$user.'.jpg" class="rounded-full" />
+          <img src="./assets/'.$username.'.jpg" class="rounded-full" />
         </div>
 
-          <p class="text-sm lg:text-lg font-bold">'.$user.' </p> 
+          <p class="text-sm lg:text-lg font-bold">'.$username.' </p> 
           
           <p class="text-xs lg:text-xs text-zinc-400 mt-0.5 lg:mt-1">'.substr($date, 11, 5).'</p> <br> 
           </div>
@@ -122,7 +122,7 @@ $total_halaman = ceil($jumlah_data / $batas);
   <button id="prev" <?php if($halaman <= 1) {?> 
   disabled class="h-10 w-20  rounded-lg mt-8 mr-3 bg-zinc-800 text-slate-200 border-none cursor-not-allowed"
   <?php }?>
-  class="h-10 w-20 hover:bg-zinc-600 active:bg-zinc-500 rounded-lg mt-8 mr-3 bg-zinc-700 text-slate-200 border-none">Previous</button>
+  class="h-10 w-20 hover:bg-indigo-400 active:bg-indigo-500 rounded-lg mt-8 mr-3 bg-zinc-700 text-slate-200 border-none">Previous</button>
 <select class="btn-group w-20 h-10 bg-zinc-700 text-slate-200 rounded-lg text-center mt-8" id="halaman">
   <?php
   for ($x = 1; $x <= $total_halaman; $x++) {
@@ -133,7 +133,7 @@ $total_halaman = ceil($jumlah_data / $batas);
   ?>
 </select>
 <button id="next" 
-<?php if($halaman == $total_halaman || $total_halaman <= 1) {?> 
+<?php if($halaman == $total_halaman || $halaman <= 1) {?> 
   disabled class="h-10 w-20  rounded-lg mt-8 ml-3 bg-zinc-800 text-slate-200 border-none cursor-not-allowed"
   <?php }?> 
 class="h-10 w-20 hover:bg-zinc-600 active:bg-zinc-500 rounded-lg mt-8 ml-3 bg-zinc-700 text-slate-200 border-none">Next</button>
