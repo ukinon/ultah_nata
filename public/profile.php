@@ -97,9 +97,9 @@ header('Location: index.php');
   </div>
               
 
-              <div class="<?php if($LOGIN == false){ ?> hidden <?php }?>hero min-h-screen text-slate-200 lg:-mb-6 lg:-mt-24">
-  <div class="hero-content flex-col lg:flex-row bg-zinc-900 rounded-xl">
-    <img src="./assets/<?php echo $user ?>.jpg" class="max-w-xs rounded-lg shadow-2xl" />
+  <div class="<?php if($LOGIN == false){ ?> hidden <?php }?>hero min-h-screen text-slate-200 -mb-6 -mt-24">
+  <div class="hero-content flex-col lg:flex-row bg-zinc-900 lg:rounded-l-full lg:rounded-r-3xl rounded-t-full">
+    <img src="./assets/<?php echo $user ?>.jpg" class="max-w-xs rounded-full shadow-2xl" />
     <?php
               $sql = "SELECT nama_lengkap, ttl, alamat, agama, status from users where id = $userID";
               $result = mysqli_query($conn, $sql);
@@ -123,7 +123,7 @@ header('Location: index.php');
 </div>
 </div>
 <div class="<?php if($LOGIN == false){ ?> hidden <?php }?>flex flex-col">
-<div class="text-3xl mb-5 ml-3 text-slate-200 lg:-mt-20"><h1>Your Posts</h1></div>
+<div class="text-3xl mb-5 ml-3 text-slate-200 -mt-20"><h1>Your Posts</h1></div>
 <div id="data"> </div>
 </div>
     </div>
