@@ -18,6 +18,7 @@ header('Location: index.php');
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.1/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <title>Natano's Diary</title>
 
@@ -96,6 +97,7 @@ header('Location: index.php');
   </div>
               </div>
               <!-- Page content here -->
+              <?php if($LOGIN == true){?>
               <div class="hidden lg:flex justify-end">
               <form action="" method="POST">
         <input type="text" placeholder="&#xf002; Search Post" style="font-family: Helvetica, FontAwesome;" class="input input-bordered rounded-full max-w-none w-64 border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_post" id="s_post" autocomplete="off" />
@@ -113,6 +115,11 @@ header('Location: index.php');
 </div>
 <br>
 <div id="data"> </div>
+<?php } else{?> 
+  <div class="flex h-full justify-center items-center">
+  <h3 class="text-3xl">You must log in first.</h3>
+</div>
+  <?php } ?>
 </div>
             <div class="drawer-side border-zinc-300 border-solid border-opacity-25 border-r-2">
               <label for="my-drawer-3" class="drawer-overlay"></label> 

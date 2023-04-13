@@ -90,6 +90,7 @@ header('Location: index.php');
   </div>
               </div>
               <!-- Page content here -->
+              <?php if($LOGIN == true) { ?>
               <div class="hidden lg:flex justify-end z-50">
               <form action="" method="POST">
         <input type="text" placeholder="&#xf002; Search Post" style="font-family: Helvetica, FontAwesome;" class="input input-bordered rounded-full max-w-none w-64 border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_post" id="s_post" autocomplete="off" />
@@ -122,10 +123,15 @@ header('Location: index.php');
               ?>  
 </div>
 </div>
-<div class="<?php if($LOGIN == false){ ?> hidden <?php }?>flex flex-col">
+<div class="flex flex-col">
 <div class="text-3xl mb-5 ml-3 text-slate-200 -mt-20"><h1>Your Posts</h1></div>
 <div id="data"> </div>
 </div>
+<?php } else{ ?>
+  <div class="flex h-full justify-center items-center">
+  <h3 class="text-3xl">You must log in first.</h3>
+</div>
+  <?php } ?>
     </div>
 
             <div class="drawer-side border-zinc-500 border-solid border-opacity-25 border-r-2">

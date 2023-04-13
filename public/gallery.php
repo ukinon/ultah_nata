@@ -19,6 +19,7 @@ header('Location: index.php');
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.1/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
     <title>Natano's Diary</title>
 
     <script>
@@ -89,23 +90,17 @@ header('Location: index.php');
   </div>
               </div>
               <!-- Page content here -->
-              <div class="hidden lg:flex justify-end">
-              <form action="" method="POST">
-        <input type="text" placeholder="Search Post" class="input input-bordered rounded-full max-w-none w-64 border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_post" id="s_post" autocomplete="off" />
-      </form>
-  </div>
-              <div <?php if($LOGIN == true){} else{echo"class='hidden'";}?>>
-              <form action="" method="POST" enctype="multipart/form-data">
-              <div class="flex justify-center">            
-              <textarea class="textarea textarea-bordered w-full mr-0 ml-0 h-40 lg:h-56 text-white bg-black resize-none m-3 border-zinc-500 border-opacity-25 border-r-0 border-l-0 mt-0 rounded-none placeholder:text-slate-200 placeholder:text-opacity-50" id="post" name="post" placeholder="Ada apa hari ini?"></textarea>
+              <?php if($LOGIN == true){ ?>
+<div class="mx-3 flex flex-row justify-center flex-wrap mt-5 rounded-xl gap-3">
+<?php for($x = 1; $x <= 30; $x++){?>
+<img src="./assets/gallery/<?php echo $x ?>.jpg" class="w-18 h-32 rounded-lg lg:w-36 lg:h-64">
+  <?php } ?>
 </div>
-<div class="flex justify-end">
-<button type="submit" class="btn w-30 h-10 bg-blue-500 text-white mr-1 md:mr-3" name="submit"> Send </button>
+<?php } else{ ?>
+  <div class="flex h-full justify-center items-center">
+  <h3 class="text-3xl">You must log in first.</h3>
 </div>
-</form>
-</div>
-<br>
-<div id="data"> </div>
+  <?php } ?>
 </div>
             <div class="drawer-side border-zinc-500 border-solid border-opacity-25 border-r-2">
               <label for="my-drawer-3" class="drawer-overlay"></label> 

@@ -47,7 +47,6 @@ $('.trash-icon').click(function(){
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
               <!-- Navbar -->
-              <!-- Navbar -->
               <div class="w-full navbar bg-transparent backdrop-blur-lg text-black lg:hidden sticky top-0 z-50 border-zinc-300">
                 <div class="flex-none lg:hidden">
                   <label for="my-drawer-3" class="btn btn-square btn-ghost text-blue-500">
@@ -62,8 +61,10 @@ $('.trash-icon').click(function(){
   </div>
               </div>
               <!-- Page content here -->
+              <?php if($LOGIN == true){ ?>
+                <div class="mt-12">
               <h3 class="text-slate-200 text-3xl m-3"> Not Completed </h3>
-    <div class="m-3 flex flex-row justify-center md:justify-start flex-wrap gap-2 lg:gap-3 mt-3">
+    <div class="m-3 text-slate-200 flex flex-row justify-center lg:justify-start flex-wrap gap-2 lg:gap-3 mt-5">
     <?php
     $sql = "SELECT id, reminder, reminderDate FROM reminder where status = 'available'";
     $sort = $conn->prepare($sql);
@@ -76,43 +77,55 @@ $('.trash-icon').click(function(){
         $reminder = $row["reminder"];
         $date = $row["reminderDate"];
 
-        echo '<div class="flex flex-col justify-center break-all whitespace-normal bg-zinc-700 w-36 h-fit min rounded-xl"><p class="m-3">'.$reminder.'';
-        if($LOGIN == true){
+        echo '<div class="flex flex-col justify-center break-all whitespace-normal break-keep bg-zinc-700 w-36 h-fit min rounded-xl"><p class="m-3">'.$reminder.'';
           echo '
           <div class="flex justify-between w-full flex-row gap-3 border-t-2 border-zinc-800">
           <p class="text-xs ml-1">'. substr($date, 0, 10) .'</p>
           <label for="my-modal-7" data-id="'.$reminderID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center, cursor-pointer, trash-icon").'"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label>
           
           <label for="my-modal-6" data-id="'.$reminderID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center mr-3 cursor-pointer check-icon").'"><i class="fa-solid fa-check text-slate-200 cursor-pointer check-icon"></i></label>
+           </div>
            </div>';
-            }
-            echo'</div>';
       }
     }
     ?>
                   <!-- The button to open modal -->
 <label for="my-modal-3" class="<?php if($LOGIN == false){?> hidden <?php } ?>bg-zinc-800 h-32 w-32 items-center flex justify-center rounded-xl cursor-pointer flex-col"><i class="text-2xl fa-solid fa-plus"></i> Add Reminder</label>
     </div>
+  </div>
 
     <h3 class="mt-24 m-3 text-3xl text-slate-200">Completed</h3>
-    <div class="m-3 flex flex-row flex-wrap gap-2 lg:gap-3 mt-3">
+    <div class="m-3 flex flex-row justify-center lg:justify-start flex-wrap gap-2 lg:gap-3 mt-3">
     <?php
-    $sql = "SELECT reminder, reminderDate FROM reminder where status = 'completed' order by reminderDate asc ";
+    $sql = "SELECT id, reminder, reminderDate FROM reminder where status = 'completed' order by reminderDate asc ";
     $sort = $conn->prepare($sql);
     $sort->execute();
     $result = $sort->get_result();
 
     if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
+        $reminderID = $row["id"];
         $reminder = $row["reminder"];
         $date = $row["reminderDate"];
 
-        echo '<div class="flex justify-center items-center break-all whitespace-normal bg-zinc-800 w-32 h-fit min rounded-xl"><p class="m-3">'.$reminder.' </div>';
+        echo '<div class="flex flex-col justify-center break-all whitespace-normal break-keep bg-zinc-900 w-36 h-fit min rounded-xl"><p class="m-3">'.$reminder.'';
+        echo '
+        <div class="flex justify-between w-full flex-row gap-3 border-t-2 border-zinc-800">
+        <p class="text-xs ml-1">'. substr($date, 0, 10) .'</p>
+        <label for="my-modal-7" data-id="'.$reminderID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center, cursor-pointer, trash-icon mr-3").'"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label>
+         </div>
+         </div>';
+        
         
       }
     }
     ?>
     </div>
+    <?php } else {?>
+      <div class="flex h-full justify-center items-center">
+  <h3 class="text-3xl">You must log in first.</h3>
+</div>
+      <?php } ?>
 </div>
 
             <div class="drawer-side border-zinc-500 border-solid border-opacity-25 border-r-2">
