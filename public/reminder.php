@@ -110,7 +110,7 @@ $('.trash-icon').click(function(){
 
         echo '<div class="flex flex-col justify-center break-all whitespace-normal break-keep bg-zinc-900 w-36 h-fit min rounded-xl"><p class="m-3">'.$reminder.'';
         echo '
-        <div class="flex justify-between w-full flex-row gap-3 border-t-2 border-zinc-800">
+        <div class="flex justify-between items-center w-full flex-row gap-3 border-t-2 border-zinc-800">
         <p class="text-xs ml-1">'. substr($date, 0, 10) .'</p>
         <label for="my-modal-7" data-id="'.$reminderID.'" class="'.(($LOGIN === false) ? "hidden" : "text-center, cursor-pointer, trash-icon mr-3").'"><i class="fa-regular fa-trash-can text-red-600 cursor-pointer"></i></label>
          </div>
