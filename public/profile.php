@@ -21,6 +21,54 @@ header('Location: index.php');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
     <title>Natano's Diary</title>
+
+    <script>
+      
+    $(document).ready(function() {
+      load_data();
+      function load_data(post, page) {
+        $.ajax({
+          method: "POST",
+          url: "myPost.php",
+          data: {
+            post: post,
+            halaman: page
+          },
+          success: function(data) {
+            $('#data').html(data);
+          }
+        });
+      }
+
+      $(document).on('change', '#halaman', function() {
+        var page = $(this).val();
+        var post = $("#s_post").val();
+        load_data(post, page);
+      });
+      $(document).on('click', '#next', function() {
+        var page = parseInt($("#halaman").val()) + 1;
+        var post = $("#s_post").val();
+        load_data(post, page);
+      });
+      $(document).on('click', '#prev', function() {
+        var page = parseInt($("#halaman").val()) - 1;
+        var post = $("#s_post").val();
+        load_data(post, page);
+      });
+
+      $('#s_post').keyup(function() {
+        var page = $(this).val();
+        var post = $("#s_post").val();
+        load_data(post, 1);
+      });
+      $('#s_postNav').keyup(function() {
+        var page = $(this).val();
+        var post = $("#s_postNav").val();
+        load_data(post, 1);
+      });
+    });
+    
+  </script>
 </head>
 <body>
 <div class="drawer drawer-mobile">
@@ -44,7 +92,7 @@ header('Location: index.php');
   </div>
               
 
-  <div class="<?php if($LOGIN == false){ ?> hidden <?php }?>hero min-h-screen text-slate-200 -mb-6 -mt-24">
+  <div class="<?php if($LOGIN == false){ ?> hidden <?php }?>hero min-h-none text-slate-200 mt-5">
   <div class="hero-content flex-col lg:flex-row bg-zinc-900 lg:rounded-l-full lg:rounded-r-3xl rounded-t-full">
     <img src="./assets/<?php echo $user ?>.jpg" class="max-w-xs rounded-full shadow-2xl" />
     <?php
@@ -70,7 +118,7 @@ header('Location: index.php');
 </div>
 </div>
 <div class="flex flex-col">
-<div class="text-3xl mb-5 ml-3 text-slate-200 -mt-20"><h1>Your Posts</h1></div>
+<div class="text-3xl mb-5 ml-3 text-slate-200 mt-5"><h1>Your Posts</h1></div>
 <div id="data"> </div>
 </div>
 <?php } else{ ?>
@@ -131,7 +179,8 @@ $result = $sort->get_result();
 </div>
 </div>
     </div>
-      <?php } ?> </li>  
+      <?php } ?> </li>
+    
               </ul>             
             </div>
           </div>
