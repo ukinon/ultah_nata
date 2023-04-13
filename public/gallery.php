@@ -111,7 +111,7 @@ header('Location: index.php');
                 <li><a href="gallery.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-bold text-white"> <i class="fas fa-image"></i> Gallery </a></li>
                 <li><a href="reminder.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fa-solid fa-thumbtack text-zinc-500"></i> Reminders </a></li>
                 <li> <a class="active:bg-slate-300 active:bg-opacity-25 mb-3 font-normal text-white" href="profile.php"><i class="fa text-zinc-500 fa-user" aria-hidden="true"></i> Profile </a></li>
-    <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <label for="my-modal-2" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</label>  </li>
+    <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <a href="login.php" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</a>  </li>
     <?php if ($LOGIN === true) { ?>
        <li class="absolute bottom-3">  
         
