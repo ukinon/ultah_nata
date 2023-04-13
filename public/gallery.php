@@ -114,7 +114,7 @@ header('Location: index.php');
                  <h1 class="text-blue-500 font-bold m-3 mt-0 text-sm"> Nano Diary </h1>
                 <li><a href="index.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fa-solid text-zinc-500 fa-book"></i> Diary</a></li>
                 <li><a href="gallery.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-bold text-white"> <i class="fas fa-image"></i> Gallery </a></li>
-                <li><a href="music.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fas text-zinc-500 fa-music"></i> Music </a></li>
+                <li><a href="reminder.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fa-solid fa-thumbtack text-zinc-500"></i> Reminders </a></li>
                 <li> <a class="active:bg-slate-300 active:bg-opacity-25 mb-3 font-normal text-white" href="profile.php"><i class="fa text-zinc-500 fa-user" aria-hidden="true"></i> Profile </a></li>
     <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <label for="my-modal-2" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</label>  </li>
     <?php if ($LOGIN === true) { ?>
@@ -137,7 +137,7 @@ $result = $sort->get_result();
           <div class="flex flex-row items-center">
           <div class="avatar mr-3">
   <div class="w-12 rounded-full">
-    <img src="../assets/'.$user.'.jpg" />
+    <img src="./assets/'.$user.'.jpg" />
   </div>
 </div>
           <p class="cursor-pointer">'. $username.'</p>

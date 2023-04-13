@@ -23,38 +23,16 @@ function tambah($data, $userID)
     return mysqli_affected_rows($conn);
 }
 
-function ubah($data)
+function reminder($data)
 {
-
     global $conn;
-    $id = $data["id"];
-    $matkul = htmlspecialchars($data["matkul"]);
-    $dosen = htmlspecialchars($data["dosen"]);
-    $hari = htmlspecialchars($data["hari"]);
-    $jumlah_jam = htmlspecialchars($data["jumlah_jam"]);
-    $jam_awal = htmlspecialchars($data["jam_awal"]);
-    $jam_akhir = htmlspecialchars($data["jam_akhir"]);
-    $tahun = htmlspecialchars($data["tahunAjaran"]);
-    $kelas = htmlspecialchars($data["kelas"]);
-    $ruangan = htmlspecialchars($data["ruangan"]);
-    $semester = htmlspecialchars($data["semester"]);
+    $reminder = htmlspecialchars($data["reminder"]);
+    $date = date("Y-m-d H:i:s");
 
+    //query insert data
 
-
-    // query insert data 
-    $query = "UPDATE jadwal SET 
-                matkul = '$matkul',
-                slot_waktu = '$jam_awal - $jam_akhir',           
-                dosen = '$dosen',
-                jumlah_jam = '$jumlah_jam',
-                hari = '$hari',
-                ruang = '$ruangan',
-                tahun_ajaran = '$tahun',           
-                kelas = '$kelas',
-                semester = '$semester'
-                WHERE id = '$id'
-                ";
-
+    $query = "INSERT INTO reminder(reminder, reminderDate) VALUES ('$reminder', '$date')";
     mysqli_query($conn, $query);
+
     return mysqli_affected_rows($conn);
 }

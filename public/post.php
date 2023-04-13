@@ -9,7 +9,7 @@ require 'check.php';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Nano Diary</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
@@ -138,7 +138,6 @@ $total_halaman = ceil($jumlah_data / $batas);
   <?php }?> 
 class="h-10 w-20 hover:bg-zinc-600 active:bg-zinc-500 rounded-lg mt-8 ml-3 bg-zinc-700 text-slate-200 border-none">Next</button>
 </div>
-
 
 </body>
 </html>

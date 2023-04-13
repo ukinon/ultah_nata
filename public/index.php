@@ -121,7 +121,7 @@ header('Location: index.php');
                  <h1 class="text-blue-500 font-bold m-3 mt-0 text-sm"> Nano Diary </h1>
                 <li><a href="index.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-bold text-white"> <i class="fa-solid fa-book"></i> Diary</a></li>
                 <li><a href="gallery.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fas fa-image text-zinc-500"></i> Gallery </a></li>
-                <li><a href="music.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fas fa-music text-zinc-500"></i> Music </a></li>
+                <li><a href="reminder.php" class="active:bg-slate-300 mb-3 active:bg-opacity-25 font-normal text-white"> <i class="fa-solid fa-thumbtack text-zinc-500"></i> Reminders </a></li>
                 <li> <a class="active:bg-slate-300 active:bg-opacity-25 mb-3 font-normal text-white" href="profile.php"><i class="fa fa-user text-zinc-500" aria-hidden="true"></i> Profile </a></li>
                 <li  <?php if ($LOGIN === true) { ?>class="hidden" <?php } else if ($LOGIN == false) { ?> class="absolute bottom-0 m-3" <?php } ?>> <a href="login.php" class="btn btn-wide h-10 bg-blue-500 hover:bg-blue-700 text-white">Login</a>  </li>
     <?php if ($LOGIN === true) { ?>
