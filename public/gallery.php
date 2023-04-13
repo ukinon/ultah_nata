@@ -21,60 +21,11 @@ header('Location: index.php');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
     <title>Natano's Diary</title>
-
-    <script>
-      
-    $(document).ready(function() {
-      load_data();
-      function load_data(post, page) {
-        $.ajax({
-          method: "POST",
-          url: "post.php",
-          data: {
-            post: post,
-            halaman: page
-          },
-          success: function(data) {
-            $('#data').html(data);
-          }
-        });
-      }
-
-      $(document).on('change', '#halaman', function() {
-        var page = $(this).val();
-        var post = $("#s_post").val();
-        load_data(post, page);
-      });
-      $(document).on('click', '#next', function() {
-        var page = parseInt($("#halaman").val()) + 1;
-        var post = $("#s_post").val();
-        load_data(post, page);
-      });
-      $(document).on('click', '#prev', function() {
-        var page = parseInt($("#halaman").val()) - 1;
-        var post = $("#s_post").val();
-        load_data(post, page);
-      });
-
-      $('#s_post').keyup(function() {
-        var page = $(this).val();
-        var post = $("#s_post").val();
-        load_data(post, 1);
-      });
-      $('#s_postNav').keyup(function() {
-        var page = $(this).val();
-        var post = $("#s_postNav").val();
-        load_data(post, 1);
-      });
-    });
-    
-  </script>
 </head>
 <body>
 <div class="drawer drawer-mobile">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
-              <!-- Navbar -->
               <!-- Navbar -->
               <div class="w-full navbar bg-transparent backdrop-blur-lg text-black lg:hidden sticky top-0 z-50 border-zinc-300">
                 <div class="flex-none lg:hidden">
@@ -83,11 +34,6 @@ header('Location: index.php');
                   </label>
                 </div> 
                 <div class="flex-1 px-2 mx- text-blue-500 font-bold">Natano's Diary</div>
-                <div class="lg:hidden flex justify-end">
-              <form action="" method="POST">
-        <input type="text" placeholder="&#xf002; Search Post" style="font-family: Helvetica, FontAwesome;" class="input input-bordered rounded-full w-36 md:w-48 h-9 placeholder:text-sm border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_postNav" id="s_postNav" autocomplete="off" />
-      </form>
-  </div>
               </div>
               <!-- Page content here -->
               <?php if($LOGIN == true){ ?>
@@ -158,28 +104,5 @@ $result = $sort->get_result();
               </ul>             
             </div>
           </div>
-
-    <input type="checkbox" id="my-modal-2" class="modal-toggle" />
-    <div class="modal" id="my-modal-2">
-      <div class="modal-box text-white w-96 bg-zinc-800">
-        <label for="my-modal-2" class="btn btn-sm btn-circle absolute right-2 top-2 bg-transparent hover:bg-zinc-800 text-white border-white">✕</label>
-        <form id="login-form" method="post" target="_self">
-          <h1 class="text-lg font-bold">Natano's Diary</h1>
-        <br>
-          <label class="input-group">
-            <span class="bg-blue-600">Username</span>
-            <input type="text" class="input w-full focus:shadow-md bg-slate-400 text-white" name="user" required>
-          </label>
-          <br>
-          <label class="input-group ">
-            <span class="bg-blue-600">Password</span>
-            <input type="password" class="input w-full focus:shadow-md shadow-black bg-slate-400 text-white" name="password" required>
-          </label>
-          <div class="flex justify-end m-3 mr-0 mb-0">
-            <button type="submit" value="login" class=" bg-blue-600 hover:bg-blue-700 border-none w-24 text-white btn mt-5" name="login"> Login </button>
-          </div>
-        </form>
-      </div>
-    </div>
 </body>
 </html>

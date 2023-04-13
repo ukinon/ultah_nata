@@ -21,60 +21,11 @@ header('Location: index.php');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/a543fba6bd.js" crossorigin="anonymous"></script>
     <title>Natano's Diary</title>
-
-    <script>
-      
-    $(document).ready(function() {
-      load_data();
-      function load_data(post, page) {
-        $.ajax({
-          method: "POST",
-          url: "myPost.php",
-          data: {
-            post: post,
-            halaman: page
-          },
-          success: function(data) {
-            $('#data').html(data);
-          }
-        });
-      }
-
-      $(document).on('change', '#halaman', function() {
-        var page = $(this).val();
-        var post = $("#s_post").val();
-        load_data(post, page);
-      });
-      $(document).on('click', '#next', function() {
-        var page = parseInt($("#halaman").val()) + 1;
-        var post = $("#s_post").val();
-        load_data(post, page);
-      });
-      $(document).on('click', '#prev', function() {
-        var page = parseInt($("#halaman").val()) - 1;
-        var post = $("#s_post").val();
-        load_data(post, page);
-      });
-
-      $('#s_post').keyup(function() {
-        var page = $(this).val();
-        var post = $("#s_post").val();
-        load_data(post, 1);
-      });
-      $('#s_postNav').keyup(function() {
-        var page = $(this).val();
-        var post = $("#s_postNav").val();
-        load_data(post, 1);
-      });
-    });
-    
-  </script>
 </head>
 <body>
 <div class="drawer drawer-mobile">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
-              <!-- Navbar -->
               <!-- Navbar -->
               <div class="w-full navbar bg-transparent backdrop-blur-sm text-black lg:hidden sticky top-0 z-50 border-zinc-300">
                 <div class="flex-none lg:hidden">
@@ -83,11 +34,6 @@ header('Location: index.php');
                   </label>
                 </div> 
                 <div class="flex-1 px-2 mx- text-blue-500 font-bold">Nano Diary</div>
-                <div class="lg:hidden flex justify-end">
-              <form action="" method="POST">
-        <input type="text" placeholder="&#xf002; Search Post" style="font-family: Helvetica, FontAwesome;" class="input input-bordered rounded-full w-36 md:w-48 h-9 placeholder:text-sm border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_postNav" id="s_postNav" autocomplete="off" />
-      </form>
-  </div>
               </div>
               <!-- Page content here -->
               <?php if($LOGIN == true) { ?>
@@ -185,8 +131,7 @@ $result = $sort->get_result();
 </div>
 </div>
     </div>
-      <?php } ?> </li>
-    
+      <?php } ?> </li>  
               </ul>             
             </div>
           </div>

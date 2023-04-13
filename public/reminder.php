@@ -54,11 +54,6 @@ $('.trash-icon').click(function(){
                   </label>
                 </div> 
                 <div class="flex-1 px-2 mx- text-blue-500 font-bold">Nano Diary</div>
-                <div class="lg:hidden flex justify-end">
-              <form action="" method="POST">
-        <input type="text" placeholder="&#xf002; Search Post" style="font-family: Helvetica, FontAwesome;" class="input input-bordered rounded-full w-36 md:w-48 h-9 placeholder:text-sm border-none m-3 bg-zinc-700 text-slate-200" aria-label="Search" name="s_postNav" id="s_postNav" autocomplete="off" />
-      </form>
-  </div>
               </div>
               <!-- Page content here -->
               <?php if($LOGIN == true){ ?>
